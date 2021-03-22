@@ -6,6 +6,6 @@ Please do something about it.
 
 ## Run
 
-npm install
+`npm install`
 
-npm start
+`npm start`
