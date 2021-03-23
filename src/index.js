@@ -29,16 +29,16 @@ const getInfo = () => {
     let len = getLen(r.data.data.children);
     let INFO = {
       length: len
-    };
+    }
     INFO.average = get_avg(r.data.data.children);
-    let most_popular = popular(r);
+    let most_popular = popular(r)
     INFO.most_popular = most_popular;
-    INFO.not_popular = {};
+    INFO.not_popular = {}
     INFO.not_popular.name = unpopuplar(r).name;
     INFO.not_popular.score = unpopuplar(r).score;
-    return INFO;
+    return INFO
   });
-};
+}
 
 async function main() {
   // NAME  
@@ -49,14 +49,14 @@ async function main() {
 
 function popular(data) {
   var pop = data.data.data.children[1].data.score;
-  var pop_name = data.data.data.children[1].data.title;
+  var pop_name = data.data.data.children[1].data.title
   for (var i = 0; i < data.data.data.children.length; i++) {
     if (pop < data.data.data.children[i].data.score) {
-      pop = data.data.data.children[i].data.score;
+      pop = data.data.data.children[i].data.score
       pop_name = data.data.data.children[i].data.title;
     }
   }
-  return { name: pop_name, score: pop };
+  return { name: pop_name, score: pop }
 }
 
 function unpopuplar(data) {
@@ -65,7 +65,7 @@ function unpopuplar(data) {
   var pop_name = data.data.data.children[1].data.title;
   for (var i = 0; i < data.data.data.children.length; i++) {
     if (pop > data.data.data.children[i].data.score) {
-      pop = data.data.data.children[i].data.score;
+      pop = data.data.data.children[i].data.score
       pop_name = data.data.data.children[i].data.title;
     }
   }
@@ -92,4 +92,4 @@ app.get("/:target", async function(req, res) {
 })
 
 logInfo("Running in port 3000")
-app.listen(3000)
+app.listen(3000);;
