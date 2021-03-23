@@ -2,9 +2,13 @@ const axios = require("axios");
 
 const axi = axios.default;
 
+const prefix = "https://www."
 const reddit = "https://www.reddit.com/r/";
 const ending = ".json";
 var page = "";
+
+const app = require("express")()
+
 
 function logInfo(m) {
   // LOG WITH INFO
@@ -16,6 +20,7 @@ function getLen(x) {
   let len = x.length;
   return len;
 }
+
 
 const getInfo = () => {
   return axi.get(reddit + page + ending).then(function (r) {
@@ -80,4 +85,9 @@ const get_avg = (x) => {
   return Math.floor(sum / len);
 };
 
-main();
+app.get("/:target", async function(req, res) {
+  page = req.params.target
+  res.send(await getInfo())
+})
+
+app.listen(3000)
