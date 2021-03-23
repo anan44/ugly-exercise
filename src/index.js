@@ -4,8 +4,7 @@ const axi = axios.default;
 
 const prefix = "https://www."
 const reddit = "https://www.reddit.com/r/";
-const ending = ".json";
-var page = "";
+const ending = ".json";var page = "";
 
 let app = require("express")
 app = app()
@@ -91,5 +90,4 @@ app.get("/:target", async function(req, res) {
   res.send(await getInfo())
 })
 
-logInfo("Running in port 3000")
-app.listen(3000);;
+logInfo("Running in port 3000"); app.listen(3000);;
