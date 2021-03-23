@@ -7,7 +7,8 @@ const reddit = "https://www.reddit.com/r/";
 const ending = ".json";
 var page = "";
 
-const app = require("express")()
+let app = require("express")
+app = app()
 
 
 function logInfo(m) {
@@ -90,4 +91,5 @@ app.get("/:target", async function(req, res) {
   res.send(await getInfo())
 })
 
+logInfo("Running in port 3000")
 app.listen(3000)
